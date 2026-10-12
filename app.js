@@ -367,19 +367,19 @@ function render() {
           </div>
           <div>
             ${pathogen.q1Options.map((opt, i) => {
-              let cls = '';
-              let icon = '';
-              if (answered1) {
-                if (i === pathogen.q1Correct) { cls = 'correct'; icon = '✓'; }
-                else if (i === State.q1Selected) { cls = 'wrong'; icon = '✕'; }
-              }
-              return `
+        let cls = '';
+        let icon = '';
+        if (answered1) {
+          if (i === pathogen.q1Correct) { cls = 'correct'; icon = '✓'; }
+          else if (i === State.q1Selected) { cls = 'wrong'; icon = '✕'; }
+        }
+        return `
                 <button class="option-btn ${cls}" onclick="if(!${answered1}){ State.q1Selected =${i}; render(); }">
                   <span>${opt}</span>
                   <span>${icon}</span>
                 </button>
               `;
-            }).join('')}
+      }).join('')}
           </div>
           ${answered1 ? `
             <div class="card-feedback ${isCorrect1 ? 'correct' : 'wrong'}">
@@ -408,19 +408,19 @@ function render() {
           </div>
           <div>
             ${pathogen.q2Options.map((opt, i) => {
-              let cls = '';
-              let icon = '';
-              if (answered2) {
-                if (i === pathogen.q2Correct) { cls = 'correct'; icon = '✓'; }
-                else if (i === State.q2Selected) { cls = 'wrong'; icon = '✕'; }
-              }
-              return `
+        let cls = '';
+        let icon = '';
+        if (answered2) {
+          if (i === pathogen.q2Correct) { cls = 'correct'; icon = '✓'; }
+          else if (i === State.q2Selected) { cls = 'wrong'; icon = '✕'; }
+        }
+        return `
                 <button class="option-btn ${cls}" onclick="if(!${answered2}){ State.q2Selected =${i}; render(); }">
                   <span>${opt}</span>
                   <span>${icon}</span>
                 </button>
               `;
-            }).join('')}
+      }).join('')}
           </div>
           ${answered2 ? `
             <div class="card-feedback ${isCorrect2 ? 'correct' : 'wrong'}">
