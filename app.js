@@ -132,6 +132,7 @@ const State = {
   categoryId: null,
   pathogenId: null,
   expandedStructure: null,
+  activeMorfTab: 'intro',
   q1Selected: null,
   q2Selected: null,
 
@@ -256,8 +257,70 @@ function render() {
         </div>
       `;
       break;
+case 'morfologia':
+      // Pestaña activa por defecto
+      const activeTab = State.activeMorfTab || 'intro';
+      
+      // Construir dinámicamente los botones basados en la información del objeto
+      const tabs = [
+        { id: 'intro', label: 'Introducción' },
+        ...pathogen.structures.map((s, i) => ({ id: i, label: s.name })),
+        { id: 'infectiva', label: 'Forma Infectiva' }
+      ];
 
-    case 'morfologia':
+      // Determinar qué contenido renderizar abajo dependiendo del botón seleccionado
+      let contentHtml = '';
+      if (activeTab === 'intro') {
+        contentHtml = `<div class="card">${pathogen.morfIntro}</div>`;
+      } else if (activeTab === 'infectiva') {
+        contentHtml = `
+          <div class="card-highlight">
+            <strong class="text-primary">Forma Infectiva / Característica:</strong><br><br>
+            ${pathogen.formaInfectiva}
+          </div>`;
+      } else {
+        const struct = pathogen.structures[activeTab];
+        contentHtml = `
+          <div class="card">
+            <strong class="text-primary">${struct.name}</strong>
+            <p class="mt-sm">${struct.desc}</p>
+          </div>`;
+      }
+
+      container.innerHTML = `
+        <header class="nav-header">
+          <button class="btn-back" onclick="State.pop()">‹</button>
+          <div>
+            <h2 class="nav-title">Morfología</h2>
+            <div class="nav-subtitle italic">${pathogen.name}</div>
+          </div>
+        </header>
+        <div class="screen-content">
+          <!-- Contenedor del Modelo 3D -->
+          <div class="model-3d-container">
+            <div class="model-3d-placeholder">
+              <span>[Modelo 3D Interactivo]</span>
+              <span class="img-placeholder-hint">Gira para explorar</span>
+            </div>
+          </div>
+          
+          <!-- Botones pequeños (Carrusel horizontal) -->
+          <div class="morf-tabs">
+            ${tabs.map(t => `
+              <button class="morf-tab-btn ${activeTab === t.id ? 'active' : ''}" 
+                      onclick="State.activeMorfTab = '${t.id}'; render();">
+                ${t.label}
+              </button>
+            `).join('')}
+          </div>
+
+          <!-- Tarjeta de subsección con la información extra -->
+          <div class="morf-content">
+            ${contentHtml}
+          </div>
+        </div>
+      `;
+      break;
       container.innerHTML = `
         <header class="nav-header">
           <button class="btn-back" onclick="State.pop()">‹</button>
