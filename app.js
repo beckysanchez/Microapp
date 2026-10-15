@@ -301,14 +301,15 @@ case 'morfologia':
           <div class="model-3d-container">
             <model-viewer 
               src="Modelos/pelota.glb"
-              alt="Modelo 3D de ${pathogen.name}"
-              camera-controls 
+              alt="Modelo 3D de ${pathogen.name}" 
               auto-rotate
-              shadow-intensity="1">
+              shadow-intensity="1"
+              camera-controls
+              disable-pan>
               
-              <!-- AQUÍ IRÁN LAS ETIQUETAS INTERACTIVAS (HOTSPOTS) -->
-              <button slot="hotspot-1" data-position="0 1.2 0" data-normal="0 1 0" class="hotspot-btn" onclick="State.activeMorfTab = 'struct-0'; render();">
-                Pared Celular
+              <!-- ETIQUETAS INTERACTIVAS (HOTSPOTS) -->
+              <button slot="hotspot-1" data-position="0 0 0" data-normal="0 1 0" class="hotspot-btn" onclick="State.activeMorfTab = 'struct-0'; render();">
+              Pared Celular
               </button>
 
             </model-viewer>

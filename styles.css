@@ -564,3 +564,37 @@ button:disabled {
   margin-top: 8px;
 }
 
+/* Hacer que el model-viewer ocupe todo el contenedor oscuro */
+model-viewer {
+  width: 80%;
+  height: 80%;
+  background-color: transparent;
+}
+
+/* Estilo de los botones flotantes (Hotspots) */
+.hotspot-btn {
+  background: rgba(87, 46, 209, 0.9);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  transform: translate(-50%, -50%); /* Centrar el punto exacto de la coordenada */
+}
+
+/* Efecto al pasar el cursor o seleccionar */
+.hotspot-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+/* Ocultar la etiqueta automáticamente si el usuario gira el modelo y queda por detrás */
+model-viewer::part(default-hotspot) {
+  transition: opacity 0.3s ease;
+}
+
