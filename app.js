@@ -133,6 +133,7 @@ const State = {
   pathogenId: null,
   expandedStructure: null,
   activeMorfTab: 'intro',
+  morfScrollPos: 0, 
   q1Selected: null,
   q2Selected: null,
 
@@ -298,16 +299,25 @@ case 'morfologia':
         <div class="screen-content">
           <!-- Contenedor del Modelo 3D -->
           <div class="model-3d-container">
-            <div class="model-3d-placeholder">
-              <span>[Modelo 3D Interactivo]</span>
-              <span class="img-placeholder-hint">Gira para explorar</span>
-            </div>
+            <model-viewer 
+              src="Modelos/pelota.glb"
+              alt="Modelo 3D de ${pathogen.name}"
+              camera-controls 
+              auto-rotate
+              shadow-intensity="1">
+              
+              <!-- AQUÍ IRÁN LAS ETIQUETAS INTERACTIVAS (HOTSPOTS) -->
+              <button slot="hotspot-1" data-position="0 1.2 0" data-normal="0 1 0" class="hotspot-btn" onclick="State.activeMorfTab = 'struct-0'; render();">
+                Pared Celular
+              </button>
+
+            </model-viewer>
           </div>
           
-          <!-- Botones pequeños (Carrusel horizontal) -->
-          <div class="morf-tabs">
+         <!-- Botones pequeños (Carrusel horizontal) -->
+          <div class="morf-tabs" id="morf-tabs-container" onscroll="State.morfScrollPos = this.scrollLeft">
             ${tabs.map(t => `
-              <button class="morf-tab-btn ${activeTab === t.id ? 'active' : ''}" 
+              <button class="morf-tab-btn ${activeTab == t.id ? 'active' : ''}" 
                       onclick="State.activeMorfTab = '${t.id}'; render();">
                 ${t.label}
               </button>
@@ -527,6 +537,14 @@ case 'morfologia':
       `;
       break;
   }
+
+if (screen === 'morfologia') {
+    const tabsContainer = document.getElementById('morf-tabs-container');
+    if (tabsContainer) {
+      tabsContainer.scrollLeft = State.morfScrollPos;
+    }
+  }
+
 }
 
 // Inicialización
