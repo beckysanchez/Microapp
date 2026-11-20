@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Opciones de Estudio - Microbiología</title>
+  <meta name="theme-color" content="#2E1A54" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  
+</head>
+<body>
+  <div id="app-container">
+    <header class="nav-header">
+      <a href="submenu.html" class="btn-back" style="text-decoration:none;">‹</a>
+      <h2 class="nav-title italic" id="pathogen-title">Cargando...</h2>
+    </header>
+    <div class="screen-content">
+      <a href="morfologia.html" class="menu-btn" style="text-decoration:none;">
+        <div class="badge-square">Mo</div>
+        <div class="menu-btn-content text-semibold">Morfología</div>
+        <div class="menu-btn-arrow">›</div>
+      </a>
+      <a href="factor-de-virulencia.html" class="menu-btn" style="text-decoration:none;">
+        <div class="badge-square">FV</div>
+        <div class="menu-btn-content text-semibold">Factores de Virulencia</div>
+        <div class="menu-btn-arrow">›</div>
+      </a>
+      <a href="resumen-clinico.html" class="menu-btn" style="text-decoration:none;">
+        <div class="badge-square">RC</div>
+        <div class="menu-btn-content text-semibold">Resumen Clínico</div>
+        <div class="menu-btn-arrow">›</div>
+      </a>
+      <a href="caso-clinico.html" class="menu-btn" style="text-decoration:none;">
+        <div class="badge-square gold">CC</div>
+        <div class="menu-btn-content text-semibold">Caso Clínico (Quiz)</div>
+        <div class="menu-btn-arrow">›</div>
+      </a>
+      <a href="reporte-laboratorio.html" class="menu-btn" style="text-decoration:none;">
+        <div class="badge-square">RL</div>
+        <div class="menu-btn-content text-semibold">Reporte de Laboratorio</div>
+        <div class="menu-btn-arrow">›</div>
+      </a>
+    </div>
+  </div>
+
+  <script src="../js/db.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pathogen = getCurrentPathogen();
+      document.getElementById('pathogen-title').textContent = pathogen.name;
+    });
+  </script>
+</body>
+</html>

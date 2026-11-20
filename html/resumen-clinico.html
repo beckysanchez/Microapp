@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Resumen Clínico - Microbiología</title>
+  <meta name="theme-color" content="#2E1A54" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  
+</head>
+<body>
+  <div id="app-container">
+    <header class="nav-header">
+      <a href="hub.html" class="btn-back" style="text-decoration:none;">‹</a>
+      <div>
+        <h2 class="nav-title">Resumen Clínico</h2>
+        <div class="nav-subtitle italic" id="pathogen-subtitle">Cargando...</div>
+      </div>
+    </header>
+    <div class="screen-content">
+      <div class="card">
+        <span class="pill-tag">Epidemiología</span>
+        <p id="clinica-epi"></p>
+      </div>
+      <div class="card">
+        <span class="pill-tag">Presentación Clínica</span>
+        <div class="section-label">¿Cómo llega al consultorio?</div>
+        <p id="clinica-llega"></p>
+      </div>
+      <div class="card">
+        <span class="pill-tag">Diagnóstico</span>
+        <div class="section-label">¿Qué muestra pedirías?</div>
+        <p class="mb-md" id="clinica-muestra"></p>
+        <div class="section-label">¿Qué veríamos?</div>
+        <p id="clinica-veriamos"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/db.js"></script>
+  <script src="../js/resumen-clinico.js"></script>
+</body>
+</html>
