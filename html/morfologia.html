@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Morfología - Microbiología</title>
+  <meta name="theme-color" content="#2E1A54" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+  <div id="app-container">
+    <header class="nav-header">
+      <a href="hub.html" class="btn-back" style="text-decoration:none;">‹</a>
+      <div>
+        <h2 class="nav-title">Morfología</h2>
+        <div class="nav-subtitle italic" id="pathogen-subtitle">Cargando...</div>
+      </div>
+    </header>
+    
+    <div class="screen-content">
+      <!-- Contenedor del Modelo 3D -->
+      <div class="model-3d-container">
+        <model-viewer 
+          id="viewer-3d"
+          src=""
+          alt="Modelo 3D" 
+          auto-rotate
+          shadow-intensity="1"
+          camera-controls
+          disable-pan>
+          
+          <button slot="hotspot-1" data-position="0 0 0" data-normal="0 1 0" class="hotspot-btn" id="hotspot-btn-0">
+            Estructura
+          </button>
+
+
+        </model-viewer>
+      </div>
+      
+      <!-- Carrusel horizontal de botones -->
+      <div class="morf-tabs" id="morf-tabs-container">
+        <!-- Se llena con morfologia.js -->
+      </div>
+
+      
+      <div class="morf-content" id="morf-content-area">
+        <!-- Se llena con morfologia.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/db.js"></script>
+  <script src="../js/morfologia.js"></script>
+</body>
+</html>
